@@ -1,0 +1,7 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h3>Welcome, {{ user.get_username }}!</h3>
+    {% endif %}
+{% endblock %}
