@@ -1,7 +1,16 @@
 {% extends "base_generic.html" %}
 
+{% load friendshiptags %}
+
 {% block content %}
     {% if user.is_authenticated %}
-        <h3>Welcome, {{ user.get_username }}!</h3>
+        <h3>Welcome, {{ user.get_short_name }}!</h3>
+
+        {% for friend in friends %}
+            <p>Here is what your friends are up to:</p>
+            <li>{{ friend.get_short_name }} (Met at {{ friend.met_at }})</li>
+        {% empty %}
+            <p>It seems you don't have any friends. Why not add some?</p>
+        {% endfor %}
     {% endif %}
 {% endblock %}

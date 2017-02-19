@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from .models import Hacker
+from .models import FriendWithMetAtField
 
 # Create your views here.
 
 def home(request):
-    return render(request, "index.html")
+    friends_of_user = FriendWithMetAtField.objects.friends(request.user)
+    return render(request, "index.html", context={"friends": friends_of_user})

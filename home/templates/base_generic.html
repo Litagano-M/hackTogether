@@ -14,14 +14,15 @@
     </head>
 
     <body>
-        <h1>hackTogether()</h1>
-
         <div class="container-fluid">
+            <h1>hackTogether()</h1>
+
             <div class="row">
                 <div class="col-sm-2">
                     {% block sidebar %}
                         <ul class="sidebar-nav">
                             <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'myprofile' %}">My profile</a></li>
                         </ul>
                     {% endblock %}
                 </div>
