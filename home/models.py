@@ -6,9 +6,9 @@ from friendship.models import Friend, FriendshipManager
 
 class Hacker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=10, null=True)
-    university = models.CharField(max_length=100, null=True)
-    next_hackathon = models.CharField(max_length=100, null=True)
+    phone_number = models.CharField(max_length=10, null=True, blank=True)
+    university = models.CharField(max_length=100, null=True, blank=True)
+    next_hackathon = models.CharField(max_length=100, null=True, blank=True)
 
 class FriendWithMetAtField(Friend):
     objects = FriendshipManager()

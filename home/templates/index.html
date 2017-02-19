@@ -7,16 +7,21 @@
         <h3>Welcome, {{ user.get_short_name }}!</h3>
 
         {% for friend in friends %}
-            <p>Here is what your friends are up to:</p>
+            {% if forloop.first %}
+                <p>Here is what your friends are up to:</p>
+            {% endif %}
+
             <li><a href="{% url "profile" friend.id %}">{{ friend.get_short_name }}</a>
-                {% if friend.next_hackathon == null %}
+                {% if friend.hacker.next_hackathon == null %}
                     is not currently planning on attending a future hackathon.
                 {% else %}
-                    is planning on attending {{ friend.next_hackathon }}.
+                    is planning on attending {{ friend.hacker.next_hackathon }}.
                 {% endif %}
             </li>
         {% empty %}
             <p>It seems you don't have any friends. Why not add some?</p>
         {% endfor %}
+    {% else %}
+        <h2>Welcome to hackTogether(), a social app for hackathon attendees. Please log in.</h2>
     {% endif %}
 {% endblock %}
