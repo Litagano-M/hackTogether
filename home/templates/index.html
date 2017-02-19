@@ -8,7 +8,13 @@
 
         {% for friend in friends %}
             <p>Here is what your friends are up to:</p>
-            <li>{{ friend.get_short_name }} (Met at {{ friend.met_at }})</li>
+            <li><a href="{% url "profile" friend.id %}">{{ friend.get_short_name }}</a>
+                {% if friend.next_hackathon == null %}
+                    is not currently planning on attending a future hackathon.
+                {% else %}
+                    is planning on attending {{ friend.next_hackathon }}.
+                {% endif %}
+            </li>
         {% empty %}
             <p>It seems you don't have any friends. Why not add some?</p>
         {% endfor %}

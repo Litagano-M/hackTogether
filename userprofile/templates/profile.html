@@ -3,4 +3,13 @@
 {% block content %}
     <h1>{{ user.get_full_name }}</h1>
     <h3>{{ user.hacker.university }}</h3>
+
+    {% if hackathon != null %}
+        <h4><i>Met at {{ hackathon }}</i></h4>
+    {% endif %}
+
+    <br>
+
+    <p>Phone number: {{ user.hacker.phone_number }}</p>
+    <p>Email: {{ user.email }}</p>
 {% endblock %}
